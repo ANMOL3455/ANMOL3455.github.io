@@ -1,7 +1,432 @@
-<html>
-    <head>
-        <body>
-            <h1> PORTFOLIO COMMING SOON !! </h1>
-        </body>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio — Coming Soon</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* =========================
+           BLURRY BACKGROUND
+        ========================= */
+
+        .background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.55;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        .blob.one {
+            width: 450px;
+            height: 450px;
+            background: #b00000;
+            top: -180px;
+            left: -120px;
+        }
+
+        .blob.two {
+            width: 500px;
+            height: 500px;
+            background: #700000;
+            right: -180px;
+            bottom: -200px;
+            animation-delay: -3s;
+        }
+
+        .blob.three {
+            width: 280px;
+            height: 280px;
+            background: #ff0000;
+            top: 40%;
+            left: 42%;
+            opacity: 0.18;
+            animation-delay: -6s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(50px, -40px) scale(1.15);
+            }
+        }
+
+        /* =========================
+           DARK OVERLAY
+        ========================= */
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.35) 45%,
+                    rgba(0, 0, 0, 0.9) 100%
+                );
+            z-index: 1;
+        }
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: min(90%, 850px);
+            padding: 70px 40px;
+            text-align: center;
+
+            background: rgba(10, 10, 10, 0.45);
+            border: 1px solid rgba(255, 0, 0, 0.25);
+            border-radius: 25px;
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 0 80px rgba(255, 0, 0, 0.08),
+                inset 0 0 40px rgba(255, 0, 0, 0.03);
+
+            animation: appear 1.2s ease forwards;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* =========================
+           SMALL TEXT
+        ========================= */
+
+        .small-text {
+            color: #ff3333;
+            font-size: 13px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           MAIN TITLE
+        ========================= */
+
+        h1 {
+            font-size: clamp(42px, 8vw, 90px);
+            font-weight: 900;
+            letter-spacing: 5px;
+            line-height: 1;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #ff2b2b,
+                #ffffff
+            );
+
+            background-size: 200% auto;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            animation:
+                gradientMove 4s linear infinite,
+                glow 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientMove {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.15));
+            }
+
+            to {
+                filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.45));
+            }
+        }
+
+        /* =========================
+           COMING SOON
+        ========================= */
+
+        .coming {
+            margin-top: 20px;
+            font-size: clamp(18px, 3vw, 27px);
+            color: #ddd;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           LOADER
+        ========================= */
+
+        .loader-wrapper {
+            margin: 45px auto 0;
+            width: min(400px, 80%);
+        }
+
+        .loader {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 35%;
+            left: -35%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #ff0000,
+                #ff5555,
+                transparent
+            );
+
+            box-shadow: 0 0 15px #ff0000;
+
+            animation: loading 1.7s ease-in-out infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                left: -35%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .loading-text {
+            margin-top: 15px;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           DOTS
+        ========================= */
+
+        .dots span {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-left: 5px;
+            border-radius: 50%;
+            background: #ff2222;
+            animation: dots 1.4s infinite;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dots {
+            0%, 60%, 100% {
+                opacity: 0.2;
+                transform: translateY(0);
+            }
+
+            30% {
+                opacity: 1;
+                transform: translateY(-5px);
+                box-shadow: 0 0 10px red;
+            }
+        }
+
+        /* =========================
+           CORNER DECORATION
+        ========================= */
+
+        .corner {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border-color: rgba(255, 0, 0, 0.7);
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+
+        .top-right {
+            top: 20px;
+            right: 20px;
+            border-top: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 2;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 55px 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                letter-spacing: 2px;
+            }
+
+            .coming {
+                letter-spacing: 4px;
+            }
+
+            .small-text {
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Blurry Background -->
+    <div class="background">
+        <div class="blob one"></div>
+        <div class="blob two"></div>
+        <div class="blob three"></div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div class="small-text">
+            Something is loading
+        </div>
+
+        <h1>PORTFOLIO</h1>
+
+        <div class="coming">
+            Coming Soon
+            <span class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+
+        <div class="loader-wrapper">
+
+            <div class="loader"></div>
+
+            <div class="loading-text">
+                Initializing portfolio
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="footer">
+        © 2026 — Anmol Sapkota
+    </div>
+
+</body>
 </html>
